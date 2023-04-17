@@ -1,0 +1,1 @@
+B.J. Oommen, “Stochastic Searching on the Line and Its Applications to Parameter Learning in Nonlinear Optimization,” IEEE Trans. Systems, Man, and Cybernetics, Part B, vol. 27, no. 4, pp. 733739, Aug. 1997.

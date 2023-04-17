@@ -1,0 +1,54 @@
+---
+aliases: [SARSA, State–Action–Reward–State–Action]
+type: topics
+status: open
+priority: p4
+creationtag: 2022-05-06 17:11
+infotags: [RL,Q-Learning][[Dyna-Q]]
+---
+Stolen almost entirely from wikipedia.
+
+**State–action–reward–state–action** (**SARSA**) is an [algorithm](https://en.wikipedia.org/wiki/Algorithm "Algorithm") for learning a [Markov decision process](https://en.wikipedia.org/wiki/Markov_decision_process "Markov decision process") policy, used in the [reinforcement learning](https://en.wikipedia.org/wiki/Reinforcement_learning "Reinforcement learning") area of [machine learning](https://en.wikipedia.org/wiki/Machine_learning "Machine learning"). It was proposed by Rummery and Niranjan in a technical note[\[1\]](https://en.wikipedia.org/wiki/State%E2%80%93action%E2%80%93reward%E2%80%93state%E2%80%93action#cite_note-1) with the name "Modified Connectionist Q-Learning" (MCQ-L). The alternative name SARSA, proposed by [Rich Sutton](https://en.wikipedia.org/wiki/Richard_S._Sutton "Richard S. Sutton"), was only mentioned as a footnote.[\[2\]](https://en.wikipedia.org/wiki/State%E2%80%93action%E2%80%93reward%E2%80%93state%E2%80%93action#cite_note-2)
+
+This name simply reflects the fact that the main function for updating the [[Q-Learning|Q-Value]] depends on the current state of the agent "**S**1", the action the agent chooses "**A**1", the reward "**R**" the agent gets for choosing this action, the state "**S**2" that the agent enters after taking that action, and finally the next action "**A**2" the agent chooses in its new state. The acronym for the quintuple (st, at, rt, st+1, at+1) is SARSA.[\[3\]](https://en.wikipedia.org/wiki/State%E2%80%93action%E2%80%93reward%E2%80%93state%E2%80%93action#cite_note-3) Some authors use a slightly different convention and write the quintuple (st, at, rt+1, st+1, at+1), depending to which time step the reward is formally assigned. The rest of the article uses the former convention.
+
+## Algorithm
+$$Q(s_{t},a_{t})\leftarrow Q(s_{t},a_{t})+\alpha \,[r_{t}+\gamma \,Q(s_{t+1},a_{t+1})-Q(s_{t},a_{t})]$$
+A SARSA agent interacts with the environment and updates the policy based on actions taken, hence this is known as an *on-policy learning algorithm*. The Q value for a state-action is updated by an error, adjusted by the [learning rate](https://en.wikipedia.org/wiki/Learning_rate "Learning rate") alpha. [[Q values]] represent the possible reward received in the next time step for taking action *a* in state *s*, plus the discounted future reward received from the next state-action observation.
+
+Watkin's [Q-learning](https://en.wikipedia.org/wiki/Q-learning "Q-learning") updates an estimate of the optimal state-action value function ![Q^{*}](https://wikimedia.org/api/rest_v1/media/math/render/svg/c1785c0a77ab5a06684e8a7ac4f5e59d59ec0319) based on the maximum reward of available actions. While SARSA learns the Q values associated with taking the policy it follows itself, Watkin's Q-learning learns the Q values associated with taking the optimal policy while following an [exploration/exploitation](https://en.wikipedia.org/wiki/Reinforcement_learning "Reinforcement learning") policy.
+
+Some optimizations of Watkin's Q-learning may be applied to SARSA.[\[4\]](https://en.wikipedia.org/wiki/State%E2%80%93action%E2%80%93reward%E2%80%93state%E2%80%93action#cite_note-4)
+
+## Hyperparameters\[[edit](https://en.wikipedia.org/w/index.php?title=State%E2%80%93action%E2%80%93reward%E2%80%93state%E2%80%93action&action=edit&section=2 "Edit section: Hyperparameters")\]
+
+### Learning rate (alpha)\[[edit](https://en.wikipedia.org/w/index.php?title=State%E2%80%93action%E2%80%93reward%E2%80%93state%E2%80%93action&action=edit&section=3 "Edit section: Learning rate (alpha)")\]
+
+The [learning rate](https://en.wikipedia.org/wiki/Learning_rate "Learning rate") determines to what extent newly acquired information overrides old information. A factor of 0 will make the agent not learn anything, while a factor of 1 would make the agent consider only the most recent information.
+
+### Discount factor (gamma)\[[edit](https://en.wikipedia.org/w/index.php?title=State%E2%80%93action%E2%80%93reward%E2%80%93state%E2%80%93action&action=edit&section=4 "Edit section: Discount factor (gamma)")\]
+
+The discount factor determines the importance of future rewards. A discount factor factor of 0 makes the agent "opportunistic", or "myopic", e.g. [\[5\]](https://en.wikipedia.org/wiki/State%E2%80%93action%E2%80%93reward%E2%80%93state%E2%80%93action#cite_note-5), by only considering current rewards, while a factor approaching 1 will make it strive for a long-term high reward. If the discount factor meets or exceeds 1, the ![Q](https://wikimedia.org/api/rest_v1/media/math/render/svg/8752c7023b4b3286800fe3238271bbca681219ed) values may diverge.
+
+### Initial conditions (*Q*(*s*0, *a*0))\[[edit](https://en.wikipedia.org/w/index.php?title=State%E2%80%93action%E2%80%93reward%E2%80%93state%E2%80%93action&action=edit&section=5 "Edit section: Initial conditions (Q(s0, a0))")\]
+
+Since SARSA is an iterative algorithm, it implicitly assumes an initial condition before the first update occurs. A low (infinite) initial value, also known as "optimistic initial conditions",[\[6\]](https://en.wikipedia.org/wiki/State%E2%80%93action%E2%80%93reward%E2%80%93state%E2%80%93action#cite_note-6) can encourage exploration: no matter what action takes place, the update rule causes it to have higher values than the other alternative, thus increasing their choice probability. In 2013 it was suggested that the first reward r could be used to reset the initial conditions. According to this idea, the first time an action is taken the reward is used to set the value of Q. This allows immediate learning in case of fixed deterministic rewards. This resetting-of-initial-conditions (RIC) approach seems to be consistent with human behavior in repeated binary choice experiments.[\[7\]](https://en.wikipedia.org/wiki/State%E2%80%93action%E2%80%93reward%E2%80%93state%E2%80%93action#cite_note-7)
+
+## See also\[[edit](https://en.wikipedia.org/w/index.php?title=State%E2%80%93action%E2%80%93reward%E2%80%93state%E2%80%93action&action=edit&section=6 "Edit section: See also")\]
+
+-   [Prefrontal cortex basal ganglia working memory](https://en.wikipedia.org/wiki/Prefrontal_cortex_basal_ganglia_working_memory "Prefrontal cortex basal ganglia working memory")
+-   [Sammon Mapping](https://en.wikipedia.org/wiki/Sammon_Mapping "Sammon Mapping")
+-   [Constructing skill trees](https://en.wikipedia.org/wiki/Constructing_skill_trees "Constructing skill trees")
+-   [Q-learning](https://en.wikipedia.org/wiki/Q-learning "Q-learning")
+-   [Temporal difference learning](https://en.wikipedia.org/wiki/Temporal_difference_learning "Temporal difference learning")
+-   [Reinforcement learning](https://en.wikipedia.org/wiki/Reinforcement_learning "Reinforcement learning")
+
+## References\[[edit](https://en.wikipedia.org/w/index.php?title=State%E2%80%93action%E2%80%93reward%E2%80%93state%E2%80%93action&action=edit&section=7 "Edit section: References")\]
+
+1.  **[^](https://en.wikipedia.org/wiki/State%E2%80%93action%E2%80%93reward%E2%80%93state%E2%80%93action#cite_ref-1 "Jump up")** [Online Q-Learning using Connectionist Systems" by Rummery & Niranjan (1994)](http://citeseerx.ist.psu.edu/viewdoc/download?doi=10.1.1.17.2539&rep=rep1&type=pdf)
+2.  **[^](https://en.wikipedia.org/wiki/State%E2%80%93action%E2%80%93reward%E2%80%93state%E2%80%93action#cite_ref-2 "Jump up")** Jeevanandam, Nivash (2021-09-13). ["Underrated But Fascinating ML Concepts #5 – CST, PBWM, SARSA, & Sammon Mapping"](https://analyticsindiamag.com/underrated-but-fascinating-ml-concepts-5-cst-pbwm-sarsa-sammon-mapping/). *Analytics India Magazine*. Retrieved 2021-12-05.
+3.  **[^](https://en.wikipedia.org/wiki/State%E2%80%93action%E2%80%93reward%E2%80%93state%E2%80%93action#cite_ref-3 "Jump up")** [Reinforcement Learning: An Introduction Richard S. Sutton and Andrew G. Barto (chapter 6.4)](http://incompleteideas.net/book/ebook/node64.html)
+4.  **[^](https://en.wikipedia.org/wiki/State%E2%80%93action%E2%80%93reward%E2%80%93state%E2%80%93action#cite_ref-4 "Jump up")** Wiering, Marco; Schmidhuber, Jürgen (1998-10-01). ["Fast Online Q(λ)"](https://link.springer.com/content/pdf/10.1023%2FA%3A1007562800292.pdf) (PDF). *Machine Learning*. **33** (1): 105–115. [doi](https://en.wikipedia.org/wiki/Doi_(identifier) "Doi (identifier)"):[10.1023/A:1007562800292](https://doi.org/10.1023%2FA%3A1007562800292). [ISSN](https://en.wikipedia.org/wiki/ISSN_(identifier) "ISSN (identifier)") [0885-6125](https://www.worldcat.org/issn/0885-6125). [S2CID](https://en.wikipedia.org/wiki/S2CID_(identifier) "S2CID (identifier)") [8358530](https://api.semanticscholar.org/CorpusID:8358530).
+5.  **[^](https://en.wikipedia.org/wiki/State%E2%80%93action%E2%80%93reward%E2%80%93state%E2%80%93action#cite_ref-5 "Jump up")** [https://www.lesswrong.com/posts/GqxuDtZvfgL2bEQ5v/arguments-against-myopic-training](https://www.lesswrong.com/posts/GqxuDtZvfgL2bEQ5v/arguments-against-myopic-training) (Retrieved 2021-09-29)
+6.  **[^](https://en.wikipedia.org/wiki/State%E2%80%93action%E2%80%93reward%E2%80%93state%E2%80%93action#cite_ref-6 "Jump up")** ["2.7 Optimistic Initial Values"](http://incompleteideas.net/book/ebook/node21.html). *incompleteideas.net*. Retrieved 2018-02-28.
+7.  **[^](https://en.wikipedia.org/wiki/State%E2%80%93action%E2%80%93reward%E2%80%93state%E2%80%93action#cite_ref-7 "Jump up")** Shteingart, H; Neiman, T; Loewenstein, Y (May 2013). ["The Role of First Impression in Operant Learning"](http://ratio.huji.ac.il/sites/default/files/publications/dp626.pdf) (PDF). *J Exp Psychol Gen*. **142** (2): 476–88. [doi](https://en.wikipedia.org/wiki/Doi_(identifier) "Doi (identifier)"):[10.1037/a0029550](https://doi.org/10.1037%2Fa0029550). [PMID](https://en.wikipedia.org/wiki/PMID_(identifier) "PMID (identifier)") [22924882](https://pubmed.ncbi.nlm.nih.gov/22924882).

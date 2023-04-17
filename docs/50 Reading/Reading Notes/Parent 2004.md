@@ -1,0 +1,1 @@
+J. Parent, K. Verbeeck, J. Lemeire, A. Nowe, K. Steenhaut, and E. Dirkx, “Adaptive load balancing of parallel applications with multi-agent reinforcement learning on heterogeneous systems,” Sci. Program., vol. 12, no. 2, pp. 71–79, 2004

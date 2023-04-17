@@ -1,0 +1,3 @@
+Usage: pdfgrep [OPTION]... PATTERN FILE...
+
+See 'pdfgrep --help' for more information

@@ -1,0 +1,43 @@
+---
+aliases: []
+type: pdf search
+infotags: interval timing
+project: Survey Paper
+priority: 
+status: open
+creationtag: 
+---
+
+
+```BASH
+216:1    Voelker_2019_Dynamical Systems in Spiking Neuromorphic Hardware.pdf
+41:1    Zhou et al_2021_Encoding time in neural dynamic regimes with distinct computational tradeoffs.pdf
+25:1    Zhou et al_2022_Encoding time in neural dynamic regimes with distinct computational tradeoffs.pdf
+23:1    Cone_Shouval_2020_Learning precise spatiotemporal sequences via biophysically realistic circuits.pdf
+13:1    Akella_Lin_2021_Time and Action Co-Training in Reinforcement Learning Agents.pdf
+11:1    Calderon et al_2022_Thunderstruck.pdf|
+9:1    Zakharov et al. - Episodic Memory for Subjective-Timescale Models.pdf
+1:1    Paton_Buonomano_2018_The Neural Basis of Timing.pdf
+1:1    Pérez_Merchant_2018_The Synaptic Properties of Cells Define the Hallmarks of Interval Timing in a.pdf
+2:1    Tallot_Doyère_2020_Neural encoding of time in the animal brain.pdf
+1:1    Paton_Buonomano_2018_The Neural Basis of Timing.pdf
+1:1    Ravichandran-Schmidt_Hass_2022_Testing the state-dependent model of time perception against experimental.pdf
+9:1    Zakharov et al. - Episodic Memory for Subjective-Timescale Models.pdf
+11:1    Espeholt et al. - 2020 - SEED RL Scalable and Efficient Deep-RL with Accel.pdf
+1:1    Complete Thesis GM-FINAL 2016.pdf
+1:1    Deverett et al_2019_Interval timing in deep reinforcement learning agents.pdf
+2:1    Tunes et al_2020_Time-Encoding Migrates from Prefrontal Cortex to Dorsal Striatum During.pdf
+23:1    Cone_Shouval_2021_Learning precise spatiotemporal sequences via biophysically realistic learning.pdf
+13:1    Egger et al_2019_A neural circuit model for human sensorimotor timing.pdf
+1:1    Mikhael_Gershman_2019_Adapting the flow of time with dopamine.pdf
+11:1    Espeholt et al. - 2020 - SEED RL Scalable and Efficient Deep-RL with Accel.pdf
+1:1    Bi_Zhou_2019_Time representation in neural network models trained to perform interval timing.pdf
+1:1    Vincent-Lamarre et al_2020_Learning Long Temporal Sequences in Spiking Networks by Multiplexing Neural.pdf
+11:1    Hardy_Buonomano_2018_Encoding Time in Feedforward Trajectories of a Recurrent Neural Network Model.pdf
+2:1    Mello et al_2015_A Scalable Population Code for Time in the Striatum.pdf
+1:1    Tallot_Doyère_2020_Neural encoding of time in the animal brain.pdf
+2:1    Jakob et al_2021_Dopamine mediates the bidirectional update of interval timing.pdf
+1:1    Gu et al_2015_Oscillatory multiplexing of neural population codes for interval timing and.pdf
+1:1    Buhusi_Meck_2005_What makes us tick.pdf
+16:1    McNaughton et al. - 2006 - Path integration and the neural basis of the 'cognitive map'.pdf
+```
